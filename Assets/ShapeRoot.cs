@@ -36,6 +36,14 @@ public class ShapeRoot : MonoBehaviour
                 if (childTransform != transform) // Avoid unparenting the parent itself
                 {
                     childTransform.SetParent(null, true); // Unparent with world position preservation
+
+                    childTransform. GetComponent<Rigidbody>().isKinematic = false;
+
+                    BoxCollider boxCollider = childTransform.GetComponent<BoxCollider>();
+                    if (boxCollider != null)
+                    {
+                        boxCollider.enabled = true; // Initially disable the collider
+                    }
                 }
             }
         }
