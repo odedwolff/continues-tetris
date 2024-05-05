@@ -17,6 +17,7 @@ public class ShapeRoot : MonoBehaviour
         {
             Debug.Log("UNPRENT ALL");
             UnparentAll();
+            Destroy(gameObject);
         }
     }
 
@@ -37,7 +38,10 @@ public class ShapeRoot : MonoBehaviour
                 {
                     childTransform.SetParent(null, true); // Unparent with world position preservation
 
-                    childTransform. GetComponent<Rigidbody>().isKinematic = false;
+                    childTransform.GetComponent<Rigidbody>().isKinematic = false;
+
+                    //copy parent's speed
+                    //TBD
 
                     BoxCollider boxCollider = childTransform.GetComponent<BoxCollider>();
                     if (boxCollider != null)
