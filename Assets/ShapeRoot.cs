@@ -41,7 +41,7 @@ public class ShapeRoot : MonoBehaviour
                     childTransform.GetComponent<Rigidbody>().isKinematic = false;
 
                     //copy parent's speed
-                    //TBD
+                    childTransform.gameObject.GetComponent<Rigidbody>().velocity = gameObject.GetComponent<Rigidbody>().velocity;
 
                     BoxCollider boxCollider = childTransform.GetComponent<BoxCollider>();
                     if (boxCollider != null)
