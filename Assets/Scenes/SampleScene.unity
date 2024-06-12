@@ -329,6 +329,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   testSphere: {fileID: 5291601351573078169, guid: 7c7fe970e9ce5e546a42e15a192d23a1, type: 3}
+  instPos: {fileID: 1820726771}
   myGameObjectList:
   - {fileID: 5757440803305583938, guid: 31a33c038bc09ab48982390b91990e37, type: 3}
   - {fileID: 6075463336546592033, guid: 048a388ec22a01943862f8077c5ff624, type: 3}
@@ -359,7 +360,7 @@ GameObject:
   - component: {fileID: 1820726769}
   - component: {fileID: 1820726768}
   m_Layer: 0
-  m_Name: std cube
+  m_Name: instPost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -435,8 +436,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1820726767}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -84.6, y: 5.01, z: 0}
-  m_LocalScale: {x: 9.509738, y: 9.8025, z: 5.552031}
+  m_LocalPosition: {x: -25.7, y: 156.5, z: 0}
+  m_LocalScale: {x: 5.8553357, y: 14.334538, z: 3.4184964}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1

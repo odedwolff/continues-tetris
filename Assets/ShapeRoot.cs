@@ -1,9 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.ConstrainedExecution;
 using UnityEngine;
 
 public class ShapeRoot : MonoBehaviour
 {
+    
+    const  int LEFT = 1;
+    const int RIGHT = 2;  
+
+    const float SLIDE_QUANTOM = 20f; 
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +25,21 @@ public class ShapeRoot : MonoBehaviour
             UnparentAll();
             Destroy(gameObject);
         }
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            Debug.Log("key left");
+            slide(LEFT);
+        }
+
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            Debug.Log("key right");
+            slide(RIGHT);
+        }
+
+
+
     }
 
     void UnparentAll()
@@ -51,5 +72,13 @@ public class ShapeRoot : MonoBehaviour
                 }
             }
         }
+    }
+
+    void slide(int direction){
+        Rigidbody rb = GetComponent<Rigidbody>();
+        Vector3 currentVelocity = rb.velocity;
+        float diff = direction == LEFT ? -SLIDE_QUANTOM: SLIDE_QUANTOM;
+        rb.MovePosition(rb.position + new Vector3(diff, 0, 0));
+        rb.velocity = currentVelocity;
     }
 }
