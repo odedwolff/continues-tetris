@@ -38,6 +38,12 @@ public class ShapeRoot : MonoBehaviour
             slide(RIGHT);
         }
 
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            Debug.Log("Up key for rotate");
+            rotate();
+        }
+
 
 
     }
@@ -80,5 +86,9 @@ public class ShapeRoot : MonoBehaviour
         float diff = direction == LEFT ? -SLIDE_QUANTOM: SLIDE_QUANTOM;
         rb.MovePosition(rb.position + new Vector3(diff, 0, 0));
         rb.velocity = currentVelocity;
+    }
+
+    void rotate(){
+        transform.Rotate(0f, 0f, 90f);
     }
 }
