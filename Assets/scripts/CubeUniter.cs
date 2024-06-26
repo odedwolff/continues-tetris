@@ -26,7 +26,7 @@ public class CubeUniter : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.D)){
-            testRemove();
+           // testRemove();
         }
 
     }

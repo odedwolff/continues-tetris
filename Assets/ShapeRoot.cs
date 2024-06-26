@@ -9,6 +9,13 @@ public class ShapeRoot : MonoBehaviour
     const  int LEFT = 1;
     const int RIGHT = 2;  
 
+    bool isActive = false;
+
+    public bool IsActive{
+        get{return isActive; }
+        set{isActive = value; }
+    }
+
     const float SLIDE_QUANTOM = 20f; 
     // Start is called before the first frame update
     void Start()
@@ -19,26 +26,26 @@ public class ShapeRoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.D))
+        if (isActive && Input.GetKeyDown(KeyCode.D))
         {
             Debug.Log("UNPRENT ALL");
             UnparentAll();
             Destroy(gameObject);
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (isActive && Input.GetKeyDown(KeyCode.LeftArrow))
         {
             Debug.Log("key left");
             slide(LEFT);
         }
 
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (isActive && Input.GetKeyDown(KeyCode.RightArrow))
         {
             Debug.Log("key right");
             slide(RIGHT);
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (isActive && Input.GetKeyDown(KeyCode.UpArrow))
         {
             Debug.Log("Up key for rotate");
             rotate();

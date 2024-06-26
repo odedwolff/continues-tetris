@@ -8,6 +8,8 @@ public class Game : MonoBehaviour
 
     public Transform instPos;
 
+    ShapeRoot activeShape = null; 
+
     public List<GameObject> myGameObjectList;   // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +19,11 @@ public class Game : MonoBehaviour
 
     public void InstantiateShape(){
         int randomIndex = Random.Range(0, myGameObjectList.Count);
-        Instantiate(myGameObjectList[randomIndex], instPos.position, instPos.rotation);
+        if(activeShape != null){
+            activeShape.IsActive = false; 
+        }
+        activeShape = Instantiate(myGameObjectList[randomIndex], instPos.position, instPos.rotation).GetComponent<ShapeRoot>();
+        activeShape.IsActive = true;
     }
 
     // Update is called once per frame
