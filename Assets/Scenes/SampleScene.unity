@@ -199,8 +199,12 @@ MonoBehaviour:
 
     new instance - N
 
-    destory
-    - D
+    destory      
+    -     D
+
+    print children
+
+    positions      -   P
 
 '
 --- !u!222 &76407010
@@ -518,9 +522,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   testSphere: {fileID: 5291601351573078169, guid: 7c7fe970e9ce5e546a42e15a192d23a1, type: 3}
   instPos: {fileID: 1820726771}
-  myGameObjectList:
-  - {fileID: 5757440803305583938, guid: 31a33c038bc09ab48982390b91990e37, type: 3}
+  prefabShapes:
   - {fileID: 6075463336546592033, guid: 048a388ec22a01943862f8077c5ff624, type: 3}
+  - {fileID: 5757440803305583938, guid: 31a33c038bc09ab48982390b91990e37, type: 3}
+  shapeInstances: []
 --- !u!4 &1635104536
 Transform:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ public class ShapeRoot : MonoBehaviour
 
     bool isActive = false;
 
+
     public bool IsActive{
         get{return isActive; }
         set{isActive = value; }
@@ -28,31 +29,36 @@ public class ShapeRoot : MonoBehaviour
     {
         if (isActive && Input.GetKeyDown(KeyCode.D))
         {
-            Debug.Log("UNPRENT ALL");
+            //Debug.Log("UNPRENT ALL");
             UnparentAll();
             Destroy(gameObject);
         }
 
         if (isActive && Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            Debug.Log("key left");
+           // Debug.Log("key left");
             slide(LEFT);
         }
 
         if (isActive && Input.GetKeyDown(KeyCode.RightArrow))
         {
-            Debug.Log("key right");
+           // Debug.Log("key right");
             slide(RIGHT);
         }
 
         if (isActive && Input.GetKeyDown(KeyCode.UpArrow))
         {
-            Debug.Log("Up key for rotate");
+            //Debug.Log("Up key for rotate");
             rotate();
         }
 
+        if (isActive && Input.GetKeyDown(KeyCode.P))
+        {
+            //Debug.Log("Up key for rotate");
+            PrintChildrenWorldPositions();
+        }
 
-
+        
     }
 
     void UnparentAll()
@@ -88,6 +94,7 @@ public class ShapeRoot : MonoBehaviour
     }
 
     void slide(int direction){
+        //Debug.Log("slide()");
         Rigidbody rb = GetComponent<Rigidbody>();
         Vector3 currentVelocity = rb.velocity;
         float diff = direction == LEFT ? -SLIDE_QUANTOM: SLIDE_QUANTOM;
@@ -95,7 +102,27 @@ public class ShapeRoot : MonoBehaviour
         rb.velocity = currentVelocity;
     }
 
+    
+    void PrintChildrenWorldPositions()
+    {
+        GameObject parent = gameObject;
+        // Iterate through each direct child of the parent object
+        foreach (Transform child in parent.transform)
+        {
+            // Print the child's position in world coordinates
+            Debug.Log("Child: " + child.name + ", Position: " + child.position);
+        }
+    }
+
+
+
+    void checkForOverLapping()
+    {
+
+    }
+
     void rotate(){
         transform.Rotate(0f, 0f, 90f);
     }
+
 }

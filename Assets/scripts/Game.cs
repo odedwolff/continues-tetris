@@ -10,7 +10,9 @@ public class Game : MonoBehaviour
 
     ShapeRoot activeShape = null; 
 
-    public List<GameObject> myGameObjectList;   // Start is called before the first frame update
+    public List<GameObject> prefabShapes;  
+
+    public List<ShapeRoot> shapeInstances = new List<ShapeRoot>();
     void Start()
     {
         /* int randomIndex = Random.Range(0, myGameObjectList.Count);
@@ -18,12 +20,13 @@ public class Game : MonoBehaviour
     }
 
     public void InstantiateShape(){
-        int randomIndex = Random.Range(0, myGameObjectList.Count);
+        int randomIndex = Random.Range(0, prefabShapes.Count);
         if(activeShape != null){
             activeShape.IsActive = false; 
         }
-        activeShape = Instantiate(myGameObjectList[randomIndex], instPos.position, instPos.rotation).GetComponent<ShapeRoot>();
+        activeShape = Instantiate(prefabShapes[randomIndex], instPos.position, instPos.rotation).GetComponent<ShapeRoot>();
         activeShape.IsActive = true;
+        shapeInstances.Add(activeShape);
     }
 
     // Update is called once per frame
@@ -38,7 +41,7 @@ public class Game : MonoBehaviour
          if (Input.GetKeyDown(KeyCode.N))
         {
             // Perform an action when space is pressed down (e.g., jump)
-            Debug.Log("New Shap Inst key pressed!");
+           // Debug.Log("New Shap Inst key pressed!");
             InstantiateShape();
         }
     }

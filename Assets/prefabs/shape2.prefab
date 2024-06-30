@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 5757440803305585337}
   m_Layer: 0
   m_Name: shape2
-  m_TagString: Untagged
+  m_TagString: CompundShape
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -305,7 +305,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 120
   m_CollisionDetection: 0
 --- !u!65 &5757440803305585341
 BoxCollider:
