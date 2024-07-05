@@ -13,6 +13,13 @@ public class Game : MonoBehaviour
     public List<GameObject> prefabShapes;  
 
     public List<ShapeRoot> shapeInstances = new List<ShapeRoot>();
+
+    
+
+    private Dictionary<int, List<double>> gridMap = new Dictionary<int, List<double>>();
+
+
+
     void Start()
     {
         /* int randomIndex = Random.Range(0, myGameObjectList.Count);

@@ -125,4 +125,24 @@ public class ShapeRoot : MonoBehaviour
         transform.Rotate(0f, 0f, 90f);
     }
 
+
+    void addElmentsToGridMap(Dictionary<int, List<double>> gridMap){
+        GameObject parent = gameObject;
+        foreach (Transform child in parent.transform)
+        {
+            // Print the child's position in world coordinates
+            //Debug.Log("Child: " + child.name + ", Position: " + child.position);
+            int column = (int)Mathf.Round(child.position.x / 10.0f);
+            double yVal = child.position.y;
+            if (gridMap.ContainsKey(column))
+            {
+                gridMap[column].Add(yVal);
+            }
+            else
+            {
+               gridMap[column] = new List<double> { yVal };
+            }
+        }
+    }
+
 }
