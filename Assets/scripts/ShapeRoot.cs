@@ -21,7 +21,16 @@ public class ShapeRoot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+            
+        // Get all child Transforms
+        foreach (Transform child in transform)
+        {
+            //Debug.Log("Child name: " + child.name);
+            
+            // You can perform actions on each child here
+            (child.GetComponent<CubeElm>()).Parent = transform.GetComponent<ShapeRoot>();
+        }
+        
     }
 
     // Update is called once per frame
