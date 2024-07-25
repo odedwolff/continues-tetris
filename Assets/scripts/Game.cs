@@ -19,6 +19,9 @@ public class Game : MonoBehaviour
     private Dictionary<int, List<double>> gridMap = new Dictionary<int, List<double>>();
 
 
+        private Dictionary<int, List<CubeElm>> cubesPos = new Dictionary<int, List<CubeElm>>();
+
+
 
     void Start()
     {

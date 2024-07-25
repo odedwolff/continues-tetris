@@ -22,6 +22,7 @@ public class ShapeRoot : MonoBehaviour
     void Start()
     {
             
+            
         // Get all child Transforms
         foreach (Transform child in transform)
         {
@@ -115,11 +116,12 @@ public class ShapeRoot : MonoBehaviour
     void PrintChildrenWorldPositions()
     {
         GameObject parent = gameObject;
+        Debug.Log("Root position:" + parent.transform.position);
         // Iterate through each direct child of the parent object
         foreach (Transform child in parent.transform)
         {
             // Print the child's position in world coordinates
-            Debug.Log("Child: " + child.name + ", Position: " + child.position);
+            Debug.Log("Child: " + child.name + ", Position: " + child.localPosition);
         }
     }
 
