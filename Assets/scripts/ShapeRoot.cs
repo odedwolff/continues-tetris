@@ -1,6 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.ConstrainedExecution;
+using System;
 using UnityEngine;
 
 public class ShapeRoot : MonoBehaviour
@@ -8,6 +7,8 @@ public class ShapeRoot : MonoBehaviour
     
     const  int LEFT = 1;
     const int RIGHT = 2;  
+
+    const int COL_WID = 10;
 
     bool isActive = false;
 
@@ -116,13 +117,31 @@ public class ShapeRoot : MonoBehaviour
     void PrintChildrenWorldPositions()
     {
         GameObject parent = gameObject;
+        Debug.Log("\n\nRoot position:" + parent.transform.position);
+        Debug.Log("root calculate coloumn:" + calcCol(parent.transform.position.x));
+
+        // Iterate through each direct child of the parent object
+        foreach (Transform child in parent.transform)
+        {
+            // Print the child's position in world coordinates
+            Debug.Log("Child: " + child.name + ", Loc Position: " + child.localPosition + "; glob pos:" + child.position + "clac col:" + calcCol(child.position.x));
+        }
+    }
+
+
+    void addChildrenToGrid(){
+        GameObject parent = gameObject;
         Debug.Log("Root position:" + parent.transform.position);
         // Iterate through each direct child of the parent object
         foreach (Transform child in parent.transform)
         {
             // Print the child's position in world coordinates
-            Debug.Log("Child: " + child.name + ", Position: " + child.localPosition);
+            //Debug.Log("Child: " + child.name + ", Loc Position: " + child.localPosition + "; glob pos:" + child.position);
         }
+    }
+
+    static int calcCol(float xPos){
+        return (int)Math.Round(xPos / COL_WID);
     }
 
 
