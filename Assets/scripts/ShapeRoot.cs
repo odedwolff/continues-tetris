@@ -13,12 +13,20 @@ public class ShapeRoot : MonoBehaviour
     bool isActive = false;
 
 
+    private Game gameManager = null;
+
+    public Game GameManager{
+        get{return gameManager; }
+        set{gameManager = value; }
+    }
+
+
     public bool IsActive{
         get{return isActive; }
         set{isActive = value; }
     }
 
-    const float SLIDE_QUANTOM = 20f; 
+    const float SLIDE_QUANTOM = 10.0f; 
     // Start is called before the first frame update
     void Start()
     {
@@ -116,6 +124,7 @@ public class ShapeRoot : MonoBehaviour
     
     void PrintChildrenWorldPositions()
     {
+
         GameObject parent = gameObject;
         Debug.Log("\n\nRoot position:" + parent.transform.position);
         Debug.Log("root calculate coloumn:" + calcCol(parent.transform.position.x));
@@ -140,8 +149,11 @@ public class ShapeRoot : MonoBehaviour
         }
     }
 
-    static int calcCol(float xPos){
-        return (int)Math.Round(xPos / COL_WID);
+    int calcCol(float xPos){
+        float originX = GameManager.instPos.position.x;
+        //return (int)Math.Round(xPos / COL_WID);
+        //return (int)Math.Round((xPos - originX)/ COL_WID);
+        return (int)Math.Floor ((xPos - originX)/ COL_WID) + 1 ;
     }
 
 

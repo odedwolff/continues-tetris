@@ -193,20 +193,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'slide - side arrows
-
-    rotate- up arrow
-
-    new instance - N
-
-    destory      
-    -     D
-
-    print children
-
-    positions      -   P
-
-'
+  m_Text: "slide - side arrows\nrotate- up arrow\nnew instance - N\ndestory      
+    -     D\nprint children\npositions      -   P\n\n*set init mrk x\n pos at 10
+    multi\n"
 --- !u!222 &76407010
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -695,7 +684,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1820726767}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -25.7, y: 156.5, z: 0}
+  m_LocalPosition: {x: -20, y: 48.6, z: 0}
   m_LocalScale: {x: 5.8553357, y: 14.334538, z: 3.4184964}
   m_Children: []
   m_Father: {fileID: 0}
