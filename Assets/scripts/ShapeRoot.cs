@@ -74,7 +74,7 @@ public class ShapeRoot : MonoBehaviour
         if (isActive && Input.GetKeyDown(KeyCode.P))
         {
             //Debug.Log("Up key for rotate");
-            PrintChildrenWorldPositions();
+            //PrintChildrenWorldPositions();
         }
 
         
@@ -138,7 +138,7 @@ public class ShapeRoot : MonoBehaviour
     }
 
 
-    void addChildrenToGrid(){
+    void addChildrenToGridDel(){
         GameObject parent = gameObject;
         Debug.Log("Root position:" + parent.transform.position);
         // Iterate through each direct child of the parent object
@@ -168,23 +168,23 @@ public class ShapeRoot : MonoBehaviour
     }
 
 
-    void addElmentsToGridMap(Dictionary<int, List<double>> gridMap){
+    public void addChildrenGridMap(){
         GameObject parent = gameObject;
+        Dictionary<int, List<CubeElm>>gridMap = gameManager.ColsToCubes;
         foreach (Transform child in parent.transform)
         {
             // Print the child's position in world coordinates
             //Debug.Log("Child: " + child.name + ", Position: " + child.position);
-            int column = (int)Mathf.Round(child.position.x / 10.0f);
-            double yVal = child.position.y;
+            int column = calcCol(child.position.x);
+            CubeElm yVal = child.GetComponent<CubeElm>();
             if (gridMap.ContainsKey(column))
             {
                 gridMap[column].Add(yVal);
             }
             else
             {
-               gridMap[column] = new List<double> { yVal };
+               gridMap[column] = new List<CubeElm> { yVal };
             }
         }
     }
-
 }

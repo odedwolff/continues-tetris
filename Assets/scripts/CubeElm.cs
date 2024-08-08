@@ -26,4 +26,9 @@ public class CubeElm : MonoBehaviour
     {
         
     }
+
+    public override string ToString(){
+        return "CubElm Inst";
+    }
+
 }

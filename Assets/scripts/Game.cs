@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class Game : MonoBehaviour
@@ -16,11 +17,14 @@ public class Game : MonoBehaviour
 
     
 
-    private Dictionary<int, List<double>> gridMap = new Dictionary<int, List<double>>();
+    //private Dictionary<int, List<double>> gridMap = new Dictionary<int, List<double>>();
 
 
-    private Dictionary<int, List<CubeElm>> cubesPos = new Dictionary<int, List<CubeElm>>();
-
+    private Dictionary<int, List<CubeElm>> colsToCubes = new Dictionary<int, List<CubeElm>>();
+    public Dictionary<int, List<CubeElm>> ColsToCubes{
+        get{return colsToCubes;}
+        set{colsToCubes = value;}
+    }
 
 
     void Start()
@@ -39,6 +43,7 @@ public class Game : MonoBehaviour
         shapeInstances.Add(activeShape);
 
         activeShape.GameManager = this;
+        activeShape.addChildrenGridMap();
     }
 
     // Update is called once per frame
@@ -56,5 +61,30 @@ public class Game : MonoBehaviour
            // Debug.Log("New Shap Inst key pressed!");
             InstantiateShape();
         }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            printColToCube();
+            //Debug.Log("Up key for rotate");
+            //PrintChildrenWorldPositions();
+        }
     }
+
+
+    void printColToCube(){
+        
+        foreach (var kvp in colsToCubes)
+        {
+            Debug.Log("Key" +  kvp.Key);
+            string buf = "";
+            foreach (var item in kvp.Value)
+            {
+                //Debug.Log("{" + item + "}...");
+                buf = buf + "{" + item + "}...";
+            }
+            Debug.Log(buf);
+        }
+    }
+
+
 }
