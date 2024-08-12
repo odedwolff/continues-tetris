@@ -15,6 +15,12 @@ public class CubeElm : MonoBehaviour
          }
     }
 
+    private List<CubeElm> containingColList;
+    public List<CubeElm> ContainingColList{
+        set;
+        get;
+    }
+
     // Start is called before the first frame update
     void Start()
     {

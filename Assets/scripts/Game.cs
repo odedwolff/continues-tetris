@@ -75,14 +75,14 @@ public class Game : MonoBehaviour
         
         foreach (var kvp in colsToCubes)
         {
-            Debug.Log("Key" +  kvp.Key);
-            string buf = "";
+            //Debug.Log("Key" +  kvp.Key);
+            string buf = "Key" +  kvp.Key + ": keys :";
             foreach (var item in kvp.Value)
             {
                 //Debug.Log("{" + item + "}...");
                 buf = buf + "{" + item + "}...";
             }
-            Debug.Log(buf);
+            Debug.Log("val:   " + buf);
         }
     }
 

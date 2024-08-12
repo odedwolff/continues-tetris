@@ -77,6 +77,11 @@ public class ShapeRoot : MonoBehaviour
             //PrintChildrenWorldPositions();
         }
 
+        if (isActive && Input.GetKeyDown(KeyCode.R))
+        {
+            removeChildrenFromGridMap();
+        }
+
         
     }
 
@@ -176,15 +181,26 @@ public class ShapeRoot : MonoBehaviour
             // Print the child's position in world coordinates
             //Debug.Log("Child: " + child.name + ", Position: " + child.position);
             int column = calcCol(child.position.x);
-            CubeElm yVal = child.GetComponent<CubeElm>();
+            CubeElm cube = child.GetComponent<CubeElm>();
             if (gridMap.ContainsKey(column))
             {
-                gridMap[column].Add(yVal);
+                gridMap[column].Add(cube);
             }
             else
             {
-               gridMap[column] = new List<CubeElm> { yVal };
+               gridMap[column] = new List<CubeElm> { cube };
             }
+            cube.ContainingColList = gridMap[column];
+        }
+    }
+
+    public void removeChildrenFromGridMap(){
+         GameObject parent = gameObject;
+        Dictionary<int, List<CubeElm>>gridMap = gameManager.ColsToCubes;
+        foreach (Transform child in parent.transform)
+        {
+            CubeElm cube = child.GetComponent<CubeElm>();
+            cube.ContainingColList.Remove(cube);
         }
     }
 }

@@ -194,8 +194,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "slide - side arrows\nrotate- up arrow\nnew instance - N\ndestory      
-    -     D\nprint children\npositions      -   P\n\n*set init mrk x\n pos at 10
-    multi\n"
+    -     D\nprint col\nmapping    -   P\n\n*set init mrk x\n pos at 10 multi\n"
 --- !u!222 &76407010
 CanvasRenderer:
   m_ObjectHideFlags: 0
