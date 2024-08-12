@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class ShapeRoot : MonoBehaviour
 {
@@ -11,6 +12,10 @@ public class ShapeRoot : MonoBehaviour
     const int COL_WID = 10;
 
     bool isActive = false;
+
+    float lastXPos = 0;
+
+    const float MOVE_THRESH = 0.2f;
 
 
     private Game gameManager = null;
@@ -46,6 +51,13 @@ public class ShapeRoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float curXPos = transform.position.x;
+        if(Math.Abs(curXPos- lastXPos) > MOVE_THRESH){
+            Debug.Log("delta move detected!!");
+            updateGridMap();
+            lastXPos = curXPos;
+        }
+
         if (isActive && Input.GetKeyDown(KeyCode.D))
         {
             //Debug.Log("UNPRENT ALL");
@@ -63,6 +75,7 @@ public class ShapeRoot : MonoBehaviour
         {
            // Debug.Log("key right");
             slide(RIGHT);
+
         }
 
         if (isActive && Input.GetKeyDown(KeyCode.UpArrow))
@@ -84,6 +97,10 @@ public class ShapeRoot : MonoBehaviour
 
         
     }
+
+
+
+
 
     void UnparentAll()
     {
@@ -156,9 +173,9 @@ public class ShapeRoot : MonoBehaviour
 
     int calcCol(float xPos){
         float originX = GameManager.instPos.position.x;
-        //return (int)Math.Round(xPos / COL_WID);
-        //return (int)Math.Round((xPos - originX)/ COL_WID);
-        return (int)Math.Floor ((xPos - originX)/ COL_WID) + 1 ;
+        int res = (int)Math.Floor ((xPos - originX)/ ((float)COL_WID) ) + 1 ;
+        //Debug.Log("calcCol(), xPos=" + xPos + ";  orgX=" + originX + ";  xDiff" + (xPos - originX) +";  out=" + res);
+        return res; 
     }
 
 
@@ -202,5 +219,12 @@ public class ShapeRoot : MonoBehaviour
             CubeElm cube = child.GetComponent<CubeElm>();
             cube.ContainingColList.Remove(cube);
         }
+    }
+
+
+    //call after a new position or rotation is in place 
+    public void updateGridMap(){
+        removeChildrenFromGridMap();
+        addChildrenGridMap();
     }
 }
