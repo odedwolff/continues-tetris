@@ -15,7 +15,12 @@ public class ShapeRoot : MonoBehaviour
 
     float lastXPos = 0;
 
+    float lastZrot = 0;
+
     const float MOVE_THRESH = 0.2f;
+
+    const float ROTATE_THRESH_DEG = 10F;
+
 
 
     private Game gameManager = null;
@@ -52,11 +57,20 @@ public class ShapeRoot : MonoBehaviour
     void Update()
     {
         float curXPos = transform.position.x;
+        float curZrot = transform.eulerAngles.z;
+
         if(Math.Abs(curXPos- lastXPos) > MOVE_THRESH){
             Debug.Log("delta move detected!!");
             updateGridMap();
             lastXPos = curXPos;
         }
+
+        if(Math.Abs(curZrot- lastZrot) > ROTATE_THRESH_DEG){
+            Debug.Log("delta rotation detected!!");
+            updateGridMap();
+            lastZrot = curZrot;
+        }
+       
 
         if (isActive && Input.GetKeyDown(KeyCode.D))
         {
@@ -69,19 +83,21 @@ public class ShapeRoot : MonoBehaviour
         {
            // Debug.Log("key left");
             slide(LEFT);
+           
         }
 
         if (isActive && Input.GetKeyDown(KeyCode.RightArrow))
         {
            // Debug.Log("key right");
             slide(RIGHT);
-
+           
         }
 
         if (isActive && Input.GetKeyDown(KeyCode.UpArrow))
         {
             //Debug.Log("Up key for rotate");
             rotate();
+
         }
 
         if (isActive && Input.GetKeyDown(KeyCode.P))
@@ -141,6 +157,7 @@ public class ShapeRoot : MonoBehaviour
         float diff = direction == LEFT ? -SLIDE_QUANTOM: SLIDE_QUANTOM;
         rb.MovePosition(rb.position + new Vector3(diff, 0, 0));
         rb.velocity = currentVelocity;
+
     }
 
     
@@ -187,6 +204,7 @@ public class ShapeRoot : MonoBehaviour
 
     void rotate(){
         transform.Rotate(0f, 0f, 90f);
+
     }
 
 
