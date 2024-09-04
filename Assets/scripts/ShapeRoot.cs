@@ -11,6 +11,8 @@ public class ShapeRoot : MonoBehaviour
 
     const int COL_WID = 10;
 
+    const float COLLIDE_THRESH = 10f;
+
     bool isActive = false;
 
     float lastXPos = 0;
@@ -20,6 +22,10 @@ public class ShapeRoot : MonoBehaviour
     const float MOVE_THRESH = 0.2f;
 
     const float ROTATE_THRESH_DEG = 10F;
+
+    const int LEFT_MOST_COL = -8;
+
+    const int RIGHT_MOST_COL = 8;
 
 
 
@@ -60,7 +66,7 @@ public class ShapeRoot : MonoBehaviour
         float curZrot = transform.eulerAngles.z;
 
         if(Math.Abs(curXPos- lastXPos) > MOVE_THRESH){
-            Debug.Log("delta move detected!!");
+            //Debug.Log("X delta move detected!!");
             updateGridMap();
             lastXPos = curXPos;
         }
@@ -114,6 +120,32 @@ public class ShapeRoot : MonoBehaviour
         
     }
 
+    bool IsSlideLegal(int direction){
+        foreach (Transform child in transform){
+            int selfCol = calcCol(child.position.x);
+            if((direction == RIGHT && selfCol == RIGHT_MOST_COL) || (direction == LEFT && selfCol == LEFT_MOST_COL)){
+                return false;
+            }
+            int idx = direction == RIGHT? selfCol+1 : selfCol-1 ;
+            if (!gameManager.ColsToCubes.ContainsKey(idx) || gameManager.ColsToCubes[idx].Count == 0 )
+            { 
+                continue;
+            }
+            List<CubeElm> directNbrs = gameManager.ColsToCubes[idx];
+            foreach (CubeElm cube in directNbrs){
+                //if the other cube is also part of this shape 
+                if(cube.Parent == this){
+                    continue;
+                }  
+                float dY = Math.Abs(transform.position.y - cube.transform.position.y);
+                if (dY < COLLIDE_THRESH ){
+                    return false;
+               }     
+            }
+        }
+        return true;
+    }
+
 
 
 
@@ -151,6 +183,11 @@ public class ShapeRoot : MonoBehaviour
     }
 
     void slide(int direction){
+        if(!IsSlideLegal(direction)){
+            Debug.Log("[][] ilegal slide blocked");
+            return;
+        }
+
         //Debug.Log("slide()");
         Rigidbody rb = GetComponent<Rigidbody>();
         Vector3 currentVelocity = rb.velocity;
