@@ -1,7 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using TMPro;
 using UnityEngine;
+
 
 public class Game : MonoBehaviour
 {
@@ -14,6 +17,15 @@ public class Game : MonoBehaviour
     public List<GameObject> prefabShapes;  
 
     public List<ShapeRoot> shapeInstances = new List<ShapeRoot>();
+
+
+    public const int LEFT_MOST_COL = -8;
+
+    public const int RIGHT_MOST_COL = 8;
+
+    const float MAX_STRIPE_DIFF_Y = 10f;
+
+
 
     
 
@@ -34,7 +46,7 @@ public class Game : MonoBehaviour
     }
 
     public void InstantiateShape(){
-        int randomIndex = Random.Range(0, prefabShapes.Count);
+        int randomIndex = UnityEngine.Random.Range(0, prefabShapes.Count);
         if(activeShape != null){
             activeShape.IsActive = false; 
         }
@@ -85,6 +97,47 @@ public class Game : MonoBehaviour
             Debug.Log("val:   " + buf);
         }
     }
+
+
+
+    //returns the complete row, or null if there isn't one 
+    List<CubeElm> isThereFullRow(){
+        for(int i = LEFT_MOST_COL ; i <= RIGHT_MOST_COL ; i++){
+            if(!colsToCubes.ContainsKey(i) || colsToCubes[i].Count== 0){
+                return null;
+            }
+        }
+
+        //it is sufficient to itereate over cubes in any colum, because a complete row must contin all coluomns...
+        
+         List<CubeElm> fullLine;
+        //iterate first column
+        foreach (CubeElm cube1 in colsToCubes[LEFT_MOST_COL])
+        {
+            fullLine = new List<CubeElm> ();
+            bool foundInFristNCols = true;
+            fullLine.Add(cube1);
+            //iterate all other columns 
+            for (int i = LEFT_MOST_COL + 1 ; foundInFristNCols && i <= RIGHT_MOST_COL; i++)
+            {
+                bool foundInCol = false;
+                foreach (CubeElm cubeN in colsToCubes[i]){
+                    if (!foundInCol && Math.Abs(cube1.transform.position.y - cubeN.transform.position.y) < MAX_STRIPE_DIFF_Y){
+                        foundInCol = true;
+                        fullLine.Add(cubeN);
+                    }
+                }
+                if(!foundInCol){
+                    foundInFristNCols = false;
+                }
+            }
+            if(foundInFristNCols){
+                return fullLine;
+            }
+        }
+        return null;
+    }
+
 
 
 }

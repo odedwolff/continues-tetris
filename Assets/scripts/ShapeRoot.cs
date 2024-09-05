@@ -23,11 +23,7 @@ public class ShapeRoot : MonoBehaviour
 
     const float ROTATE_THRESH_DEG = 10F;
 
-    const int LEFT_MOST_COL = -8;
-
-    const int RIGHT_MOST_COL = 8;
-
-
+    
 
     private Game gameManager = null;
 
@@ -123,7 +119,7 @@ public class ShapeRoot : MonoBehaviour
     bool IsSlideLegal(int direction){
         foreach (Transform child in transform){
             int selfCol = calcCol(child.position.x);
-            if((direction == RIGHT && selfCol == RIGHT_MOST_COL) || (direction == LEFT && selfCol == LEFT_MOST_COL)){
+            if((direction == RIGHT && selfCol == Game.RIGHT_MOST_COL) || (direction == LEFT && selfCol == Game.LEFT_MOST_COL)){
                 return false;
             }
             int idx = direction == RIGHT? selfCol+1 : selfCol-1 ;
