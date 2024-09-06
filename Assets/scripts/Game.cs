@@ -80,6 +80,13 @@ public class Game : MonoBehaviour
             //Debug.Log("Up key for rotate");
             //PrintChildrenWorldPositions();
         }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+           isThereFullRow();
+        }
+
+
     }
 
 
@@ -102,8 +109,10 @@ public class Game : MonoBehaviour
 
     //returns the complete row, or null if there isn't one 
     List<CubeElm> isThereFullRow(){
+        Debug.Log("entering isThereFullRow()");
         for(int i = LEFT_MOST_COL ; i <= RIGHT_MOST_COL ; i++){
             if(!colsToCubes.ContainsKey(i) || colsToCubes[i].Count== 0){
+                Debug.Log("some colums are missing or empty, no complete row");
                 return null;
             }
         }
@@ -129,12 +138,16 @@ public class Game : MonoBehaviour
                 }
                 if(!foundInCol){
                     foundInFristNCols = false;
+                    Debug.Log("no match in row " + i);
+
                 }
             }
             if(foundInFristNCols){
+                Debug.Log("full row found!");
                 return fullLine;
             }
         }
+        Debug.Log("no full row found...");
         return null;
     }
 
