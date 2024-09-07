@@ -23,7 +23,7 @@ public class Game : MonoBehaviour
 
     public const int RIGHT_MOST_COL = 8;
 
-    const float MAX_STRIPE_DIFF_Y = 10f;
+    const float MAX_STRIPE_DIFF_Y = 3f;
 
 
 
@@ -107,6 +107,16 @@ public class Game : MonoBehaviour
 
 
 
+    void colorLine(List<CubeElm> cubeLine){
+        Color newColor = new Color(1f, 0f, 0f); // Red color
+        foreach (CubeElm cube in cubeLine){
+            cube.GetComponent<Renderer>().material.color = newColor;
+        }
+    }
+    
+
+
+
     //returns the complete row, or null if there isn't one 
     List<CubeElm> isThereFullRow(){
         Debug.Log("entering isThereFullRow()");
@@ -144,6 +154,7 @@ public class Game : MonoBehaviour
             }
             if(foundInFristNCols){
                 Debug.Log("full row found!");
+                colorLine(fullLine);
                 return fullLine;
             }
         }
