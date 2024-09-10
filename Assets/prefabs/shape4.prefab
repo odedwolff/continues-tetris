@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f22cd3274e367ff4fa4a569e630ec047, type: 2}
+  - {fileID: 2100000, guid: 4da98c77fdddbd448a4b02553c9b6dd4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 1193552076832822860}
   - component: {fileID: 1193552076832822856}
   m_Layer: 0
-  m_Name: shape 4
+  m_Name: shape4
   m_TagString: CompundShape
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -277,7 +277,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f22cd3274e367ff4fa4a569e630ec047, type: 2}
+  - {fileID: 2100000, guid: 4da98c77fdddbd448a4b02553c9b6dd4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -402,7 +402,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f22cd3274e367ff4fa4a569e630ec047, type: 2}
+  - {fileID: 2100000, guid: 4da98c77fdddbd448a4b02553c9b6dd4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
