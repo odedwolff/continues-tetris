@@ -259,10 +259,13 @@ public class ShapeRoot : MonoBehaviour
             if (gridMap.ContainsKey(column))
             {
                 gridMap[column].Add(cube);
+                cube.ContainingColList = gridMap[column];
             }
             else
             {
                gridMap[column] = new List<CubeElm> { cube };
+               cube.ContainingColList = gridMap[column];
+
             }
             cube.ContainingColList = gridMap[column];
         }

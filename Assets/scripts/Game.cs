@@ -169,6 +169,7 @@ public class Game : MonoBehaviour
             if(cube.Parent != null){
                 cube.Parent.breakdown();
             }
+            cube.ContainingColList.Remove(cube);
             Destroy(cube.gameObject);
         }
     }
