@@ -155,11 +155,22 @@ public class Game : MonoBehaviour
             if(foundInFristNCols){
                 Debug.Log("full row found!");
                 colorLine(fullLine);
+                handleFullLine(fullLine);
                 return fullLine;
             }
         }
         Debug.Log("no full row found...");
         return null;
+    }
+
+
+    void handleFullLine(List<CubeElm> line){
+        foreach(CubeElm cube in line){
+            if(cube.Parent != null){
+                cube.Parent.breakdown();
+            }
+            Destroy(cube.gameObject);
+        }
     }
 
 

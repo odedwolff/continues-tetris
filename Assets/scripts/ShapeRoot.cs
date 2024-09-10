@@ -77,8 +77,9 @@ public class ShapeRoot : MonoBehaviour
         if (isActive && Input.GetKeyDown(KeyCode.D))
         {
             //Debug.Log("UNPRENT ALL");
-            UnparentAll();
-            Destroy(gameObject);
+            //UnparentAll();
+            //Destroy(gameObject);
+            breakdown();
         }
 
         if (isActive && Input.GetKeyDown(KeyCode.LeftArrow))
@@ -114,6 +115,11 @@ public class ShapeRoot : MonoBehaviour
         }
 
         
+    }
+
+    public void breakdown(){
+        UnparentAll();
+        Destroy(gameObject);
     }
 
     bool IsSlideLegal(int direction){
