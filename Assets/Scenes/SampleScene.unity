@@ -193,9 +193,28 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "slide - side arrows\nrotate- up arrow\nnew instance - N\ndestory     
-    -     D\nprint col\nmapping    -   P\ngen test     -   T\n\n*set init mrk x\n
-    pos at 10 multi\n"
+  m_Text: 'slide - side arrows
+
+    rotate- up arrow
+
+    new instance - N
+
+    destory     
+    -     D
+
+    print col
+
+    mapping    -   P
+
+    gen test     -   T
+
+
+    *set
+    init mrk x
+
+    pos at 10 multi
+
+'
 --- !u!222 &76407010
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -514,6 +533,9 @@ MonoBehaviour:
   prefabShapes:
   - {fileID: 6075463336546592033, guid: 048a388ec22a01943862f8077c5ff624, type: 3}
   - {fileID: 5757440803305583938, guid: 31a33c038bc09ab48982390b91990e37, type: 3}
+  - {fileID: 6161992363197395043, guid: 6e2c75e7236cc4349a70f2a9c8b9d680, type: 3}
+  - {fileID: 1193552076832823731, guid: f152e2983e5b6b742a54b4d81f27eccc, type: 3}
+  - {fileID: 4423419677344548360, guid: c4e1b9bd8c30d2543b42e4f748fbdf7b, type: 3}
   shapeInstances: []
 --- !u!4 &1635104536
 Transform:
@@ -684,7 +706,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1820726767}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -20, y: 48.6, z: 0}
+  m_LocalPosition: {x: -20, y: 137.4, z: 0}
   m_LocalScale: {x: 5.8553357, y: 14.334538, z: 3.4184964}
   m_Children: []
   m_Father: {fileID: 0}
