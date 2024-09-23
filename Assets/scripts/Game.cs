@@ -19,9 +19,9 @@ public class Game : MonoBehaviour
     public List<ShapeRoot> shapeInstances = new List<ShapeRoot>();
 
 
-    public const int LEFT_MOST_COL = -8;
+    public const int LEFT_MOST_COL = -4;
 
-    public const int RIGHT_MOST_COL = 8;
+    public const int RIGHT_MOST_COL = 5;
 
     const float MAX_STRIPE_DIFF_Y = 3f;
 
