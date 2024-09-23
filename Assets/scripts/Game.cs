@@ -25,7 +25,9 @@ public class Game : MonoBehaviour
 
     const float MAX_STRIPE_DIFF_Y = 3f;
 
+    double lastCheckRowTime = 0;
 
+    double ROW_CHECK_INTERVAL_MS = 50;
 
     
 
@@ -61,6 +63,12 @@ public class Game : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        double now = DateTime.Now.TimeOfDay.TotalMilliseconds;
+        if (now - lastCheckRowTime > ROW_CHECK_INTERVAL_MS)
+        {
+            isThereFullRow();
+            lastCheckRowTime = now;
+        }
         if (Input.GetKeyDown(KeyCode.D))
         {
             // Perform an action when space is pressed down (e.g., jump)
