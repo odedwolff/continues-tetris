@@ -29,7 +29,9 @@ public class Game : MonoBehaviour
 
     double ROW_CHECK_INTERVAL_MS = 50;
 
-    
+    public static float RELEASE_NEXT_Y_THRESH = 50.0f;
+
+    float instShapeIntrevlSec = 3.0f;
 
     //private Dictionary<int, List<double>> gridMap = new Dictionary<int, List<double>>();
 
@@ -45,6 +47,8 @@ public class Game : MonoBehaviour
     {
         /* int randomIndex = Random.Range(0, myGameObjectList.Count);
         Instantiate(myGameObjectList[randomIndex]); */
+
+        InvokeRepeating("InstantiateShape", 1.0f , instShapeIntrevlSec);
     }
 
     public void InstantiateShape(){
@@ -127,10 +131,10 @@ public class Game : MonoBehaviour
 
     //returns the complete row, or null if there isn't one 
     List<CubeElm> isThereFullRow(){
-        Debug.Log("entering isThereFullRow()");
+       // Debug.Log("entering isThereFullRow()");
         for(int i = LEFT_MOST_COL ; i <= RIGHT_MOST_COL ; i++){
             if(!colsToCubes.ContainsKey(i) || colsToCubes[i].Count== 0){
-                Debug.Log("some colums are missing or empty, no complete row");
+                //Debug.Log("some colums are missing or empty, no complete row");
                 return null;
             }
         }
@@ -156,18 +160,18 @@ public class Game : MonoBehaviour
                 }
                 if(!foundInCol){
                     foundInFristNCols = false;
-                    Debug.Log("no match in row " + i);
+                   // Debug.Log("no match in row " + i);
 
                 }
             }
             if(foundInFristNCols){
-                Debug.Log("full row found!");
+               // Debug.Log("full row found!");
                 colorLine(fullLine);
                 handleFullLine(fullLine);
                 return fullLine;
             }
         }
-        Debug.Log("no full row found...");
+        //Debug.Log("no full row found...");
         return null;
     }
 
@@ -180,6 +184,7 @@ public class Game : MonoBehaviour
             cube.ContainingColList.Remove(cube);
             Destroy(cube.gameObject);
         }
+        //Invoke("InstantiateShape", 1f);
     }
 
 

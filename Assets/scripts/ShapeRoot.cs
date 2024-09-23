@@ -23,6 +23,11 @@ public class ShapeRoot : MonoBehaviour
 
     const float ROTATE_THRESH_DEG = 10F;
 
+    bool releaseNextUsed=false;
+
+    int NM_COLL_B4_NEXT_REL=3;
+
+    int colCount= 0;
     
 
     private Game gameManager = null;
@@ -60,6 +65,8 @@ public class ShapeRoot : MonoBehaviour
     {
         float curXPos = transform.position.x;
         float curZrot = transform.eulerAngles.z;
+        
+         
 
         if(Math.Abs(curXPos- lastXPos) > MOVE_THRESH){
             //Debug.Log("X delta move detected!!");
@@ -68,7 +75,7 @@ public class ShapeRoot : MonoBehaviour
         }
 
         if(Math.Abs(curZrot- lastZrot) > ROTATE_THRESH_DEG){
-            Debug.Log("delta rotation detected!!");
+            //Debug.Log("delta rotation detected!!");
             updateGridMap();
             lastZrot = curZrot;
         }
@@ -186,7 +193,7 @@ public class ShapeRoot : MonoBehaviour
 
     void slide(int direction){
         if(!IsSlideLegal(direction)){
-            Debug.Log("[][] ilegal slide blocked");
+            //Debug.Log("[][] ilegal slide blocked");
             return;
         }
 
@@ -216,16 +223,7 @@ public class ShapeRoot : MonoBehaviour
     }
 
 
-    void addChildrenToGridDel(){
-        GameObject parent = gameObject;
-        Debug.Log("Root position:" + parent.transform.position);
-        // Iterate through each direct child of the parent object
-        foreach (Transform child in parent.transform)
-        {
-            // Print the child's position in world coordinates
-            //Debug.Log("Child: " + child.name + ", Loc Position: " + child.localPosition + "; glob pos:" + child.position);
-        }
-    }
+    
 
     int calcCol(float xPos){
         float originX = GameManager.instPos.position.x;
@@ -287,4 +285,17 @@ public class ShapeRoot : MonoBehaviour
         removeChildrenFromGridMap();
         addChildrenGridMap();
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        // Handle physical collisions here
+        //Debug.Log("Collision detected with: " + collision.gameObject.name);
+        
+        
+       /*  if(colCount++ == NM_COLL_B4_NEXT_REL){
+            gameManager.InstantiateShape();
+        } */
+    }
+
+    
 }
