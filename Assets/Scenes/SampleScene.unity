@@ -632,6 +632,7 @@ MonoBehaviour:
   - {fileID: 1193552076832823731, guid: f152e2983e5b6b742a54b4d81f27eccc, type: 3}
   - {fileID: 4423419677344548360, guid: c4e1b9bd8c30d2543b42e4f748fbdf7b, type: 3}
   shapeInstances: []
+  instShapeIntrevlSec: 2.5
 --- !u!4 &1635104536
 Transform:
   m_ObjectHideFlags: 0

@@ -23,15 +23,18 @@ public class Game : MonoBehaviour
 
     public const int RIGHT_MOST_COL = 5;
 
-    const float MAX_STRIPE_DIFF_Y = 3f;
+    //const float MAX_STRIPE_DIFF_Y = 3f;
+
+    const float MAX_STRIPE_DIFF_Y = 5f;
+
 
     double lastCheckRowTime = 0;
 
-    double ROW_CHECK_INTERVAL_MS = 50;
+    double ROW_CHECK_INTERVAL_MS = 20;
 
     public static float RELEASE_NEXT_Y_THRESH = 50.0f;
 
-    float instShapeIntrevlSec = 3.0f;
+    public float instShapeIntrevlSec = 3.0f;
 
     //private Dictionary<int, List<double>> gridMap = new Dictionary<int, List<double>>();
 
